@@ -21,3 +21,4 @@ env/
 .vscode/
 .git
 __pycache__
+Databases.db
