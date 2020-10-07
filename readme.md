@@ -10,3 +10,15 @@ Iniciando el contenedor
 Prendiendo y apagando ambiente 
 
     docker start -a scrap
+
+
+### Despliegue 
+
+
+
+gcloud builds submit --tag gcr.io/d-languages-1/scraper
+
+
+gcloud run deploy --image gcr.io/d-languages-1/scraper --platform managed
+
+
