@@ -117,10 +117,10 @@ def buscar(palabra):
   try:
     frecuency = soup.find('div',attrs={'class':'gt-baf-cell gt-baf-entry-score'}).get('title')
     num_frecuency=frecuencyy(frecuency)
-    dici['usefrecuency'] = num_frecuency
+    dici['useFrecuency'] = num_frecuency
   except:
     print("no se encuentra frecuencia")
-    dici['usefrecuency']=None
+    dici['useFrecuency']=None
   nodes = soup.find("div", attrs={'class' : 'gt-cd gt-cd-mmd'}).find("div", attrs= {'class': 'gt-cd-c'})
   definitions=final_definitions(nodes)
   dici['definitions'] = definitions
