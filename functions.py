@@ -82,6 +82,14 @@ def final_definitions(nodes):
  return final
 
 
+def examples(nodo):
+    list_examples=[]
+    for ejem in nodo:
+      nodo=ejem.get_text()
+      list_examples.append(nodo)
+    return list_examples
+
+
 
 #@app.get("/translate/{palabra}")
 def buscar(palabra):
@@ -116,4 +124,7 @@ def buscar(palabra):
   nodes = soup.find("div", attrs={'class' : 'gt-cd gt-cd-mmd'}).find("div", attrs= {'class': 'gt-cd-c'})
   definitions=final_definitions(nodes)
   dici['definitions'] = definitions
+  nodo=soup.find_all('div',attrs={'class':'gt-ex-text'})
+  example=examples(nodo)
+  dici['example'] = example
   return dici
