@@ -1,6 +1,11 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware( CORSMiddleware, allow_origins=["*"],
+    allow_credentials=True,allow_methods=["*"], allow_headers=["*"],
+)
 
 import dryscrape
 from bs4 import BeautifulSoup
@@ -16,8 +21,10 @@ soup = BeautifulSoup(source,'lxml')
 
 print(soup)"""
 
+@app.get("/")
 def read_root():
-    return {"Hello": "World22"}
+    return {"Scrapper": "Bievenido al scraper, no hay documentación"}
+
 #cambiar palabra
 #la funcion que hace que se pueda hacer el parser de la url dada
 def cambia_sopa(palabra): #palabra en ingl
@@ -89,8 +96,7 @@ def final_definitions(nodes):
 
 
 
-@app.get("/craper/{palabra}")
-
+@app.get("/translate/{palabra}")
 def buscar(palabra):
   dici={}
   soup=cambia_sopa(palabra)
