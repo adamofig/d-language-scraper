@@ -19,6 +19,6 @@ Prendiendo y apagando ambiente
 gcloud builds submit --tag gcr.io/d-languages-1/scraper
 
 
-gcloud run deploy --image gcr.io/d-languages-1/scraper --platform managed
+gcloud run deploy --memory 512Mi --image gcr.io/d-languages-1/scraper --platform managed
 
 
