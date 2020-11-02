@@ -1,4 +1,5 @@
 fastapi==0.59.0                 # Framework web
 uvicorn==0.11.5                 # Servidor
-dryscrape==1.0                  # DryScripe
+# dryscrape==1.0                  # DryScripe
 beautifulsoup4==4.9.3           # Scraper
+selenium==3.141.0               # Selenium
