@@ -43,7 +43,6 @@ def cambia_sopa_scrap(palabra): #palabra en ingl
   url = "https://translate.google.com.mx/?hl=es#view=home&op=translate&sl=en&tl=es&text="+palabra 
   wd.get(url)
   soup = BeautifulSoup(wd.page_source,'html.parser')
-  wd.quit()
   return soup 
 
 #consigue otras traducciones y traduccion 
@@ -56,8 +55,11 @@ def scrap_transalation(palabra):
         textos=soup.find_all('span', attrs={'class' : 'tlid-translation translation'})
         translation=textos[1].text  #contando con que habra solo femenino,masculino y masculino sera el segundo 
     except:  #si no significa que no tiene genero 
+        
         translation=soup.find("span", attrs={'class' : 'tlid-translation translation'}).text
-     
+
+
+          
     cadena_otros_verbos=""
     try:
         body=soup.find("tbody")  #cambia el body segun la sopa
@@ -80,8 +82,8 @@ def scrap_transalation(palabra):
         print("no se encontro body")
     lista_otros_verbos=unique(lista_otros_verbos)
     cadena_otros_verbos=create_pipe_string(lista_otros_verbos)
-    dicci['otherTranslations']=cadena_otros_verbos
-    dicci['spanishTranslation']=translation
+    dicci['other_translation']=cadena_otros_verbos
+    dicci['translation']=translation
     return dicci
 
 def get_word_from_api(palabra): #palabra en ingl
@@ -135,7 +137,7 @@ def extract_data_from_word(lista):
     lista_sinonimos = lista_sinonimos[:15]
   except: #suponemos que la lista es mas pequenia
     pass
-  dicci['definitions'] = create_pipe_string(lista_definiciones)
-  dicci['examples'] = create_pipe_string(lista_ejemplos)
+  dicci['definition'] = create_pipe_string(lista_definiciones)
+  dicci['example'] = create_pipe_string(lista_ejemplos)
   dicci['synonyms'] = create_pipe_string(lista_sinonimos)
   return dicci
