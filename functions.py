@@ -3,10 +3,10 @@ import dryscrape
 from bs4 import BeautifulSoup
 #cambiar palabra
 #la funcion que hace que se pueda hacer el parser de la url dada
+
 def cambia_sopa(palabra): #palabra en ingl
   sess = dryscrape.Session()
   url = "https://translate.google.com.mx/#view=home&op=translate&sl=en&tl=es&text="+palabra
-
  # print(url)
   sess.visit(url)
   source = sess.body()

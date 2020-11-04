@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from selenium import webdriver
 
 #import functions
 
@@ -16,7 +17,6 @@ def read_root():
 
 
 
-from selenium import webdriver
 
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
