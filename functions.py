@@ -1,16 +1,23 @@
-#funciones 
-import dryscrape
+from selenium import webdriver
 from bs4 import BeautifulSoup
-#cambiar palabra
-#la funcion que hace que se pueda hacer el parser de la url dada
-def cambia_sopa(palabra): #palabra en ingl
-  sess = dryscrape.Session()
-  url = "https://translate.google.com.mx/#view=home&op=translate&sl=en&tl=es&text="+palabra
 
- # print(url)
-  sess.visit(url)
-  source = sess.body()
-  soup = BeautifulSoup(source,'html.parser')
+def init_driver():
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    # options.add_argument('window-size=1200x600')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+
+    browser = webdriver.Chrome(chrome_options=options)
+    return browser
+
+
+def cambia_sopa(palabra): #palabra en ingl
+  wd = init_driver()
+  url = "https://translate.google.com.mx/?hl=es#view=home&op=translate&sl=en&tl=es&text="+palabra 
+  wd.get(url)
+  soup = BeautifulSoup(wd.page_source,'html.parser')
+  wd.quit()
   return soup 
 
 # Recibe un objeto de tipo bs4.element.ResultSet
