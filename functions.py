@@ -91,14 +91,9 @@ def final_definitions(nodes):
 
 def examples(nodo):
     list_examples=[]
-    i=0
     for ejem in nodo:
-     i=i+1
-     if i==10:
-      break
-     else:
       nodo=ejem.get_text()
-     list_examples.append(nodo)
+      list_examples.append(nodo)
     return list_examples
 
 
@@ -138,5 +133,5 @@ def buscar(palabra):
   dici['definitions'] = definitions
   nodo=soup.find_all('div',attrs={'class':'gt-ex-text'})
   example=examples(nodo)
-  dici['examples'] = example
+  dici['example'] = example
   return dici
